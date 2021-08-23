@@ -43,10 +43,18 @@ function retornaNumerosParesElevadosADois(array) {
  return elevadoAoQuadrado
 }
 console.log(retornaNumerosParesElevadosADois)
+
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-  
+  let maiorNum = 0
+  for (let i = 0; i < array.length; i++){
+      if(array[i] > maiorNum){
+          maiorNum = array[i]
+      }
+  }
+  return maiorNum
 }
+console.log(retornaMaiorNumero)
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
