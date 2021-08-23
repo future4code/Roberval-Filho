@@ -25,8 +25,12 @@ console.log(retornaArrayOrdenado)
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-  
+ return array.filter((numerosP) => {
+    return numerosP % 2 === 0
+ })
+
 }
+console.log(retornaNumerosPares)
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
