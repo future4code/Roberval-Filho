@@ -34,9 +34,15 @@ console.log(retornaNumerosPares)
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
- 
+ let elevadoAoQuadrado = [];
+ for (let i = 0; i< array.length;i++){
+     if(array[i] % 2 === 0){
+         elevadoAoQuadrado.push(array[i] ** 2)
+     }
+ }
+ return elevadoAoQuadrado
 }
-
+console.log(retornaNumerosParesElevadosADois)
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
   
