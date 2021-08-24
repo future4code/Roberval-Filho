@@ -95,7 +95,15 @@ if(ladoA === ladoB && ladoA === ladoC){
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-  
+    const arrayOrdenado = retornaArrayOrdenado(array)
+    const indiceSegundoMenor = 1
+    const indiceSegundoMaior = array.length - 2
+ 
+    return [
+       arrayOrdenado[indiceSegundoMaior],
+       arrayOrdenado[indiceSegundoMenor]
+    ]
+ 
 }
 
 // EXERCÍCIO 11
