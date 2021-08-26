@@ -44,9 +44,10 @@ div img {
     border-radius: 5px;
     font-size: 20px;
     color: white;
-    position: relative;
-    top: 40px;
-    right: 15vw;
+    display: block;
+    position: absolute;
+    left: 45vw;
+    margin: 0 auto;
 }
 
 .botao-amarelo:hover {
