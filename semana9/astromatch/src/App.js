@@ -8,18 +8,16 @@ const App = () => {
   const [telaAtual, setTelaAtual] = useState("Home")
   
   
-  //state = {
-    //telaAtual: "Home"
-//};
+  
 
 const escolherTela = () => {
     switch (telaAtual){
     case "Home":
-        return <HomePage />
+        return <><button onClick= {() => mudaTela("Matches")}>Ir para Matches</button><HomePage /></>
     case "Matches":
-        return <MatchesPage />
+        return <><button onClick= {() => mudaTela("Home")}>Ir Para Home</button><MatchesPage /></>
     default: 
-        return <HomePage />
+        return <><button onClick= {() => mudaTela("Matches")}>Ir para Matches</button><HomePage /></>
     }
 }
 
@@ -29,8 +27,6 @@ const mudaTela = (nomeTela) => {
 
   return (
     <div >
-      <button onClick= {() => mudaTela("Matches")}>Ir para Matches</button>
-      <button onClick= {() => mudaTela("Home")}>Ir Para Home</button>
       <button>Limpar Matches</button>
       {escolherTela()}
     </div>
