@@ -1,3 +1,4 @@
+import axios from "axios"
 import React, { useState } from "react"
 import { HomePage } from "./components/HomePage"
 import { MatchesPage } from "./components/MatchesPage"
@@ -25,9 +26,19 @@ const mudaTela = (nomeTela) => {
     setTelaAtual(nomeTela);
 }    
 
+const clearMatches = ()  => {
+  axios.put('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/roberval-dionisio-maryam/clear')
+  .then((res) => {
+    alert("Limpeza realizada com sucesso!")
+  }) 
+  .catch((err) => {
+    console.log(err.response)
+  })
+}
+
   return (
     <div >
-      <button>Limpar Matches</button>
+      <button onClick={clearMatches}>Limpar Matches</button>
       {escolherTela()}
     </div>
   );

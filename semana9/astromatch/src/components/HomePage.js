@@ -62,6 +62,7 @@ export const HomePage = () => {
 
     return(
         <HomeContainer>
+            {!profile ? <div>Acabaram os perfis! Aperte o botão de limpar matches</div> : 
                 <Janela>
                     <img src={profile.photo}></img>
                     <h1>{profile.name}, {profile.age}</h1>
@@ -71,6 +72,7 @@ export const HomePage = () => {
                         <button onClick={() => escolherPessoa(true)}>💚</button>
                     </div>
                 </Janela>
+            }
             </HomeContainer>
     )
 }

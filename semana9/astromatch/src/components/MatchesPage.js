@@ -1,61 +1,52 @@
-import React from "react"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import ListaMatches from "./ListaMatches"
 
 const MainContainer = styled.div`
-display: flex;
-border: 2px solid red;
-width: 470px;
-padding: 10px 20px;
-margin: 10px 40vw;
-height: 500px;
-align-items: center;
-justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
-const JanelaProfiles = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-width: 400px;
-margin-bottom: 20px;
-h2{
-    padding: 10px;
-}
-img{
-    width: 70px;
-    border-radius: 70px;
-    margin-right: 25px;
-    padding: 10px;
-}
-`
+
 const JanelaItens = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
-border: 2px solid red;
-margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
 `
 
 export const MatchesPage = () => {
+
+    const [matchesList, setMatchesList] = useState([])
+
+    useEffect(() =>{
+        getMatches()
+    }, [])
+
+    const getMatches = () => {
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/roberval-dionisio-maryam/matches')
+        .then((res) => {
+            setMatchesList(res.data.matches)
+        })
+        .catch((err) => {
+            console.log(err.response)
+        })
+    }
+
+    const listaMatches = matchesList.map((m) => {
+        return <ListaMatches photo={m.photo} name={m.name} />
+    })
+
     return(
         <MainContainer>
-                <JanelaProfiles>
                     <JanelaItens>
-                        <img src="https://s2.glbimg.com/c1tS_axTjV_qDkmMeMs3wYZCgGY=/0x0:5472x3648/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/H/v/pTatikTlSIWRuTzd0JwA/j9a6180.jpg"></img>
-                        <h2>Nome Pessoa</h2>
+                        {listaMatches.length > 0 ? listaMatches : <div>Infelizmente você não recebeu matches 💔</div>}
                     </JanelaItens>
-                    <JanelaItens>
-                        <img src="https://s2.glbimg.com/c1tS_axTjV_qDkmMeMs3wYZCgGY=/0x0:5472x3648/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/H/v/pTatikTlSIWRuTzd0JwA/j9a6180.jpg"></img>
-                        <h2>Nome Pessoa</h2>
-                    </JanelaItens>
-                    <JanelaItens>
-                        <img src="https://s2.glbimg.com/c1tS_axTjV_qDkmMeMs3wYZCgGY=/0x0:5472x3648/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/H/v/pTatikTlSIWRuTzd0JwA/j9a6180.jpg"></img>
-                        <h2>Nome Pessoa</h2>
-                    </JanelaItens>
-                    <JanelaItens>
-                        <img src="https://s2.glbimg.com/c1tS_axTjV_qDkmMeMs3wYZCgGY=/0x0:5472x3648/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2017/H/v/pTatikTlSIWRuTzd0JwA/j9a6180.jpg"></img>
-                        <h2>Nome Pessoa</h2>
-                    </JanelaItens>
-                </JanelaProfiles>
-            </MainContainer>
+        </MainContainer>
     )
 }
